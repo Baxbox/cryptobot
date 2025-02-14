@@ -68,16 +68,16 @@ BaxBoxBot supports **various trading strategies**, stored in `pluginrules/`.
 
 | Strategy Name       | Description |
 |--------------------|-------------|
-| **2XRule** | Sells when price reaches **2X** the buy price. |
-| **ForeverRule** | Keeps trading continuously within a **10% range**. |
-| **TrailingStopRule** | Sells if price drops **5% from the highest** after buying. |
-| **MeanReversionRule** | Buys when price drops **5% below the moving average**, sells when it rises **5% above**. |
-| **MomentumRule** | Buys when price increases **3% in a short time**, sells if it drops. |
-| **GridTradingRule** | Places **buy/sell orders** at set price intervals (e.g., every **5%**). |
-| **RSIRule** | Uses **Relative Strength Index (RSI)** to determine buy/sell points. |
-| **TimeBasedRule** | Buys and sells **at fixed time intervals**. |
-| **VolumeSurgeRule** | Buys when **trading volume spikes**, sells when it drops. |
-| **CustomTargetRule** | Sells when price reaches a **custom target percentage gain**. |
+| **2x** | Sells when price reaches **2X** the buy price. |
+| **forever** | Keeps trading continuously within a **10% range**. |
+| **trailing** | Sells if price drops **5% from the highest** after buying. |
+| **mean** | Buys when price drops **5% below the moving average**, sells when it rises **5% above**. |
+| **momentum** | Buys when price increases **3% in a short time**, sells if it drops. |
+| **grid** | Places **buy/sell orders** at set price intervals (e.g., every **5%**). |
+| **rsi** | Uses **Relative Strength Index (RSI)** to determine buy/sell points. |
+| **time** | Buys and sells **at fixed time intervals**. |
+| **volume** | Buys when **trading volume spikes**, sells when it drops. |
+| **custom** | Sells when price reaches a **custom target percentage gain**. |
 
 ---
 
@@ -98,7 +98,7 @@ Then, update **`config.json`** to use the new strategy.
 ## **Running the Bot**
 Start the bot with:
 ```sh
-python baxboxbot.py
+python3 baxboxbot.py
 ```
 
 The bot will continuously monitor prices and execute trades every **60 seconds**.
