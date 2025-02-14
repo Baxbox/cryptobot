@@ -1,39 +1,35 @@
-# BaxBoxBot
+Here's an updated **README** for **BaxBoxBot**, incorporating the new dynamic trading rules and plugin system.  
 
-## Overview
-This is a simple automated trading bot for **Solana-based tokens**, designed to monitor prices and execute trades based on predefined conditions. The bot supports multiple wallets, allowing different users to have their own lists of coins and trading rules. This is currently a prototype non-functioning.
+---
 
-## Features
-- 🪙 **Supports Multiple Wallets** – Manage multiple Solana wallets with unique trading strategies.
-- 📈 **Price Monitoring** – Fetches real-time token prices using the **Jupiter API**.
-- 🤖 **Automated Trading** – Buys and sells tokens when price conditions are met.
-- 🔄 **Continuous Execution** – Runs in a loop, checking for trades every 60 seconds.
-- 🔧 **Configurable Settings** – All settings (wallets, tokens, buy/sell rules) are stored in `config.json`.
+# **BaxBoxBot**  
+A **Solana-based crypto trading bot** that dynamically loads trading strategies and executes buy/sell orders based on real-time price data.  
 
-## Installation
+## **Features**
+✅ Supports multiple wallets and token lists.  
+✅ Uses **dynamic trading strategies** from the `pluginrules/` folder.  
+✅ Supports **different strategies per token** (e.g., **2X Rule, Momentum Rule, RSI Rule**).  
+✅ Automatically fetches live token prices from **Jupiter Aggregator**.  
+✅ Modular and **easily extendable** with custom trading strategies.  
 
-### 1. **Clone the Repository**
-```bash
-git clone https://github.com/Baxbox/cryptobot.git
-cd cryptobot
+---
+
+## **Installation**
+### **1. Set up a Python virtual environment (optional but recommended)**
+```sh
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 2. **Set Up a Virtual Environment**
-```bash
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate    # Windows
-```
-
-### 3. **Install Dependencies**
-```bash
+### **2. Install required dependencies**
+```sh
 pip install -r requirements.txt
 ```
 
-## Configuration
+### **3. Configure your wallets and trading strategies**
+Edit **`config.json`** to add your wallets, tokens, and trading strategies.
 
-### 1. **Edit `config.json`**
-Define your wallets, tokens, and price triggers:
+Example:
 ```json
 {
     "wallets": [
@@ -41,26 +37,85 @@ Define your wallets, tokens, and price triggers:
             "name": "My Wallet",
             "wallet_secret": [128, 45, 76, ...],
             "tokens": [
-                {"symbol": "SOL", "buy_price": 80.0, "sell_price": 150.0},
-                {"symbol": "RAY", "buy_price": 1.2, "sell_price": 3.5}
+                {
+                    "symbol": "SOL",
+                    "buy_price": 80.0,
+                    "strategy": "2XRule"
+                },
+                {
+                    "symbol": "RAY",
+                    "buy_price": 1.5,
+                    "strategy": "MomentumRule"
+                }
             ]
         }
     ]
 }
 ```
 
-### 2. **Run the Bot**
-```bash
+---
+
+## **How It Works**
+1. The bot **fetches real-time token prices** from **Jupiter Aggregator**.
+2. It dynamically **loads the trading strategy** specified in `config.json`.
+3. Each strategy **determines if a buy or sell order should be executed**.
+4. The bot continuously **monitors and executes trades** every 60 seconds.
+
+---
+
+## **Available Trading Strategies**
+BaxBoxBot supports **various trading strategies**, stored in `pluginrules/`.
+
+| Strategy Name       | Description |
+|--------------------|-------------|
+| **2XRule** | Sells when price reaches **2X** the buy price. |
+| **ForeverRule** | Keeps trading continuously within a **10% range**. |
+| **TrailingStopRule** | Sells if price drops **5% from the highest** after buying. |
+| **MeanReversionRule** | Buys when price drops **5% below the moving average**, sells when it rises **5% above**. |
+| **MomentumRule** | Buys when price increases **3% in a short time**, sells if it drops. |
+| **GridTradingRule** | Places **buy/sell orders** at set price intervals (e.g., every **5%**). |
+| **RSIRule** | Uses **Relative Strength Index (RSI)** to determine buy/sell points. |
+| **TimeBasedRule** | Buys and sells **at fixed time intervals**. |
+| **VolumeSurgeRule** | Buys when **trading volume spikes**, sells when it drops. |
+| **CustomTargetRule** | Sells when price reaches a **custom target percentage gain**. |
+
+---
+
+## **Adding Custom Strategies**
+To create a **new strategy**, add a `.py` file inside `pluginrules/` and define a function:
+```python
+def should_trade(symbol, price, buy_price):
+    if price <= buy_price:
+        return "buy"
+    elif price >= buy_price * 1.5:
+        return "sell"
+    return None
+```
+Then, update **`config.json`** to use the new strategy.
+
+---
+
+## **Running the Bot**
+Start the bot with:
+```sh
 python baxboxbot.py
 ```
 
-## Notes
-- Make sure your wallet secret key is **stored securely**.
-- Use a private RPC service for better performance if needed.
-- You can modify the `time.sleep(60)` value in the script to adjust the frequency of price checks.
+The bot will continuously monitor prices and execute trades every **60 seconds**.
 
-## License
-This project is open-source under the **MIT License**.
+---
 
-🚀 Happy Trading!
+## **Planned Features**
+🚀 **Stop-loss and take-profit settings**  
+🚀 **Machine-learning-based trading strategies**  
+🚀 **Multi-chain support (Ethereum, BSC, etc.)**  
+🚀 **Discord/Telegram alerts for trades**  
 
+---
+
+## **Contributing**
+Want to improve **BaxBoxBot**? Feel free to submit **pull requests** or **new strategy ideas**!
+
+---
+
+This README gives **clear setup instructions**, explains the **trading strategies**, and makes it easy to extend the bot. 🚀 Let me know if you need any refinements!

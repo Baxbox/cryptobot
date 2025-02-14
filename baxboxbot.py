@@ -9,6 +9,7 @@ from solana.keypair import Keypair
 # Configuration
 SOLANA_RPC_URL = "https://api.mainnet-beta.solana.com"
 JUPITER_API_URL = "https://quote-api.jup.ag/v6"
+RULES_DIR = "pluginrules"
 
 # Load wallets and trading rules
 with open("config.json", "r") as f:
@@ -22,23 +23,46 @@ def get_token_price(symbol):
     data = response.json()
     return data.get("data", {}).get(symbol, {}).get("price", None)
 
+def load_strategy(strategy_name):
+    """Dynamically load a trading strategy module from the pluginrules directory."""
+    rule_file = f"{strategy_name.lower()}_rule.py"
+    rule_path = os.path.join(RULES_DIR, rule_file)
+
+    if not os.path.exists(rule_path):
+        print(f"Strategy {strategy_name} not found. Skipping...")
+        return None
+
+    spec = importlib.util.spec_from_file_location("rule_module", rule_path)
+    rule_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(rule_module)
+    return rule_module
+
+def buy_or_sell(symbol, price, strategy_name, buy_price):
+    """Wrapper function to return buy/sell decision based on the selected strategy."""
+    strategy_module = load_strategy(strategy_name)
+    if strategy_module and hasattr(strategy_module, "should_trade"):
+        return strategy_module.should_trade(symbol, price, buy_price)
+    return None  # No trade if no valid strategy is found
+
 def check_trading_conditions(wallet_config):
     """Check trading conditions for a given wallet and execute trades."""
     for token in wallet_config["tokens"]:
         symbol = token["symbol"]
+        strategy_name = token.get("strategy")  # Load strategy from config
+        buy_price = token.get("buy_price", 0)  # Reference price for strategy
         price = get_token_price(symbol)
-        if price is None:
+
+        if price is None or not strategy_name:
             continue
-        
-        if price <= token["buy_price"]:
-            execute_trade(wallet_config["wallet_secret"], symbol, "buy")
-        elif price >= token["sell_price"]:
-            execute_trade(wallet_config["wallet_secret"], symbol, "sell")
+
+        decision = buy_or_sell(symbol, price, strategy_name, buy_price)
+        if decision in ["buy", "sell"]:
+            execute_trade(wallet_config["wallet_secret"], symbol, decision)
 
 def execute_trade(wallet_secret, symbol, trade_type):
     """Simulated trade execution."""
     wallet = Keypair.from_secret_key(bytes(wallet_secret))
-    print(f"{trade_type.upper()} order executed for {symbol} in wallet {wallet.public_key}")
+    print(f"{trade_type.upper()} order executed for {symbol} in wallet {wallet.public_key()}")
 
 if __name__ == "__main__":
     while True:
