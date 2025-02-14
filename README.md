@@ -1,6 +1,3 @@
-Here's an updated **README** for **BaxBoxBot**, incorporating the new dynamic trading rules and plugin system.  
-
----
 
 # **BaxBoxBot**  
 A **Solana-based crypto trading bot** that dynamically loads trading strategies and executes buy/sell orders based on real-time price data.  
