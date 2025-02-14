@@ -14,8 +14,8 @@ This is a simple automated trading bot for **Solana-based tokens**, designed to 
 
 ### 1. **Clone the Repository**
 ```bash
-git clone https://github.com/your-repo/baxboxbot.git
-cd baxboxbot
+git clone https://github.com/Baxbox/cryptobot.git
+cd cryptobot
 ```
 
 ### 2. **Set Up a Virtual Environment**
