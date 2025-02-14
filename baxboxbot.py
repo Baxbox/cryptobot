@@ -1,6 +1,7 @@
 import json
 import time
 import requests
+# pip install solana==0.28.0
 from solana.rpc.api import Client
 from solana.transaction import Transaction
 from solana.keypair import Keypair
@@ -44,4 +45,3 @@ if __name__ == "__main__":
         for wallet_config in config["wallets"]:
             check_trading_conditions(wallet_config)
         time.sleep(60)
-        
