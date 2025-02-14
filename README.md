@@ -112,7 +112,3 @@ The bot will continuously monitor prices and execute trades every **60 seconds**
 
 ## **Contributing**
 Want to improve **BaxBoxBot**? Feel free to submit **pull requests** or **new strategy ideas**!
-
----
-
-This README gives **clear setup instructions**, explains the **trading strategies**, and makes it easy to extend the bot. 🚀 Let me know if you need any refinements!
