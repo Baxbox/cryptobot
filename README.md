@@ -40,12 +40,12 @@ Example:
                 {
                     "symbol": "SOL",
                     "buy_price": 80.0,
-                    "strategy": "2XRule"
+                    "strategy": "2x"
                 },
                 {
                     "symbol": "RAY",
                     "buy_price": 1.5,
-                    "strategy": "MomentumRule"
+                    "strategy": "momentum"
                 }
             ]
         }
