@@ -1,0 +1,37 @@
+{
+    "wallets": [
+        {
+            "name": "Main Wallet",
+            "wallet_secret": [
+                128, 45, 76, 23, 89, 90, 12, 34, 56, 78, 90, 101, 112, 131, 145, 167,
+                178, 190, 203, 215, 221, 234, 245, 255, 19, 28, 37, 46, 55, 64, 73, 82
+            ],
+            "tokens": [
+                {"symbol": "SOL", "buy_price": 80.0, "sell_price": 150.0},
+                {"symbol": "RAY", "buy_price": 1.2, "sell_price": 3.5}
+            ]
+        },
+        {
+            "name": "Alternate Wallet",
+            "wallet_secret": [
+                210, 150, 178, 90, 67, 145, 199, 234, 56, 78, 120, 101, 99, 111, 134, 156,
+                167, 189, 200, 211, 222, 233, 244, 250, 16, 29, 38, 47, 59, 69, 79, 88
+            ],
+            "tokens": [
+                {"symbol": "SOL", "buy_price": 75.0, "sell_price": 140.0},
+                {"symbol": "SRM", "buy_price": 0.8, "sell_price": 2.5}
+            ]
+        },
+        {
+            "name": "Another Wallet",
+            "wallet_secret": [
+                190, 120, 145, 200, 234, 199, 111, 98, 76, 54, 32, 21, 11, 10, 9, 8,
+                7, 6, 5, 4, 3, 2, 1, 0, 25, 35, 45, 55, 65, 75, 85, 95
+            ],
+            "tokens": [
+                {"symbol": "SOL", "buy_price": 85.0, "sell_price": 160.0},
+                {"symbol": "COPE", "buy_price": 2.0, "sell_price": 6.0}
+            ]
+        }
+    ]
+}
