@@ -1,7 +1,7 @@
 # BaxBoxBot
 
 ## Overview
-This is a simple automated trading bot for **Solana-based tokens**, designed to monitor prices and execute trades based on predefined conditions. The bot supports multiple wallets, allowing different users to have their own lists of coins and trading rules.
+This is a simple automated trading bot for **Solana-based tokens**, designed to monitor prices and execute trades based on predefined conditions. The bot supports multiple wallets, allowing different users to have their own lists of coins and trading rules. This is currently a prototype non-functioning.
 
 ## Features
 - 🪙 **Supports Multiple Wallets** – Manage multiple Solana wallets with unique trading strategies.
