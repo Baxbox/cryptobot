@@ -128,6 +128,22 @@ pip install -r requirements.txt
         <td><b>grid</b></td>
         <td>Places <b>buy/sell orders</b> at set price intervals (e.g., every <b>5%</b>)</td>
     </tr>
+    <tr>
+        <td><b>rsi</b></td>
+        <td>Uses <b>Relative Strength Index (RSI)</b> to determine buy/sell points</td>
+    </tr>
+    <tr>
+        <td><b>time</b></td>
+        <td>Buys and sells <b>at fixed time intervals</b></td>
+    </tr>
+    <tr>
+        <td><b>volume</b></td>
+        <td>Buys when <b>trading volume spikes</b>, sells when it drops</td>
+    </tr>
+    <tr>
+        <td><b>custom</b></td>
+        <td>Sells when price reaches a <b>custom target percentage gain</b></td>
+    </tr>
 </table>
 
 <hr>
