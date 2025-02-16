@@ -6,15 +6,23 @@
             "tokens": [
                 {
                     "symbol": "DEEP",
-                    "mint_id":"hTRDn7zE5tDHRnjj6Qms2WG1zEGv9ii6AiwfgbFpump",
+                    "mint_id": "hTRDn7zE5tDHRnjj6Qms2WG1zEGv9ii6AiwfgbFpump",
                     "buy_price": 0.0,
-                    "strategy": "2x"
+                    "strategy": "2x",
+                    "alternate_strategies": {
+                        "on_fail": ["grid"],
+                        "on_success": ["momentum"]
+                    }
                 },
                 {
                     "symbol": "TRUMP",
                     "buy_price": 1.5,
-                    "mint_id":"6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
-                    "strategy": "forever"
+                    "mint_id": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+                    "strategy": "forever",
+                    "alternate_strategies": {
+                        "on_fail": ["rsi"],
+                        "on_success": []
+                    }
                 }
             ]
         },
@@ -24,18 +32,25 @@
             "tokens": [
                 {
                     "symbol": "LOVEAI",
-                    "mint_id":"FqGxVMsvqxchQWRD5CyQpPK1aW13Db8EvC7PvxwVpk3w",
+                    "mint_id": "FqGxVMsvqxchQWRD5CyQpPK1aW13Db8EvC7PvxwVpk3w",
                     "buy_price": 0.0,
-                    "strategy": "grid"
+                    "strategy": "grid",
+                    "alternate_strategies": {
+                        "on_fail": ["momentum"],
+                        "on_success": ["2x"]
+                    }
                 },
                 {
                     "symbol": "TRUMP",
                     "buy_price": 1.5,
-                    "mint_id":"6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
-                    "strategy": "rsi"
+                    "mint_id": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+                    "strategy": "rsi",
+                    "alternate_strategies": {
+                        "on_fail": [],
+                        "on_success": []
+                    }
                 }
             ]
         }
-
     ]
 }
