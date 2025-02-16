@@ -175,4 +175,9 @@ python3 baxboxbot.py
 <hr>
 
 <h2>📄 License</h2>
-<p>Thi
+<p>This project is <b>open-source</b> and distributed under the <b>MIT License</b>.</p>
+
+<hr>
+
+<h2>📧 Contact & Support</h2>
+<p>For any questions or issues, feel free to <b>open a GitHub issue</b> or reach out!</p>
