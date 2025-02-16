@@ -3,10 +3,10 @@ from datetime import datetime
 from tinydb import TinyDB, Query
 
 BOT_DB = "baxboxbot.json"
-db = TinyDB(BOT_DB)
 trade = Query()
 
 def create_trade(symbol,trade_type,usd_price,coin_price,strategy,wallet):
+    db = TinyDB(BOT_DB)
     now = datetime.now()
     now = now.strftime("%Y-%m-%d %H:%M:%S")
     db.insert({"symbol":symbol,"strategy":strategy,"trade_type":trade_type,"usd_price":usd_price,"coin_price":coin_price,"datetime":now,"wallet":wallet})
